@@ -1,16 +1,23 @@
 # Inteligência Logística: Dashboard de Performance e Saúde Financeira
 
 <img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Solicita%C3%A7%C3%A3o%20por%20email%20do%20Projeto%20Log%C3%ADstica.JPG?raw=true">
-Este projeto surgiu da necessidade estratégica do gestor de logística em consolidar o desempenho das operações. 
-A falta de uma visão unificada dos 5 Centros de Distribuição (CDs) impedia decisões ágeis e o controle preciso sobre o nível de serviço e rentabilidade. 
-O objetivo foi transformar bases de dados dispersas em uma ferramenta visual e segmentável para suporte à tomada de decisão.
+Projeto surgiu da necessidade do gestor da logística que está com dificuldade para acompanhar o desempenho logístico das
+operações que atualmente não tem uma visão consolidada e acessível dos Centros de Distribuição
+(CDs), o que tem dificultado a tomada de decisões estratégicas.<br><br>
+
+Objetivos principais:<br>
+- Acompanhar a performance logística de forma consolidada entre todos os CDs;<br>
+- Ter a possibilidade de analisar cada CD individualmente;<br>
+- Acompanhar os principais KPIs logísticos como OTIF (Entrega no prazo e completa), INFULL ( Entrega completa) e ONTIME (Entrega no prazo);<br>
+- Visualizar o volume de pedidos entregues no prazo e os atrasados;<br>
+- Ter uma visão clara das ocorrências logísticas (como mercadoria errada, cliente ausente etc);<br>
+- Verificar a distribuição de pedidos por tipo de veículo utilizado;<br>
+- Avaliar o desempenho mensal dos KPIs;<br>
+- Ter uma visão financeira dos custos logísticos, receita bruta, margem e ticket médio;<br>
+- Visualizar os dados por cidade e por tipo de ocorrência..
 
 <br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+##
 
 ## Ferramentas e Tecnologias:
 
@@ -24,10 +31,12 @@ O objetivo foi transformar bases de dados dispersas em uma ferramenta visual e s
 
 <br>
 
+##
+
 ## Tratamento de Dados (ETL)
 <img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Tratamento%20de%20Dados%20aplicado.JPG?raw=true">
 Nesta fase, utilizei o Power Query para realizar o processo de ETL (Extração, Transformação e Carga). 
-<br>
+<br><br>
 
 Processos Realizados:
 
@@ -40,6 +49,8 @@ Processos Realizados:
 - Criação de Colunas Condicionais: Desenvolvi lógicas simples no Power Query para pré-classificar ocorrências, otimizando o processamento que seria feito posteriormente via DAX.
 <br>
 
+##
+
 ## Modelagem de Dados e Inteligência de Tempo
 <img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Tabela%20criada%20Dim%20Calend%C3%A1rio.JPG?raw=true">
 
@@ -51,6 +62,8 @@ Desenvolvi uma tabela de dimensões de tempo (dCalendário) utilizando Linguagem
 
 - Continuidade: Garante que o dashboard não tenha "buracos" em meses sem movimentação operacional.
 <br>
+
+##
 
 ## Arquitetura Star Schema (Esquema Estrela)
 <img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Relacionamento%20da%20Dim%20Calendario%20com%20a%20Fato%20Pedidos.JPG?raw=true">
@@ -66,3 +79,5 @@ Organizei o modelo seguindo as melhores práticas de Business Intelligence:
 - Relacionamentos: Estabeleci conexões do tipo 1:N (Um para Muitos), garantindo integridade referencial e filtros que se propagam corretamente por todas as páginas do dashboard.
 
 <br>
+
+##
