@@ -1,126 +1,78 @@
 # Inteligência Logística: Dashboard de Performance e Saúde Financeira
 
-<img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Solicita%C3%A7%C3%A3o%20por%20email%20do%20Projeto%20Log%C3%ADstica.JPG?raw=true">
-Projeto surgiu da necessidade do gestor da logística que está com dificuldade para acompanhar o desempenho logístico das
-operações que atualmente não tem uma visão consolidada e acessível dos Centros de Distribuição
-(CDs), o que tem dificultado a tomada de decisões estratégicas.<br><br>
+Este projeto surgiu da necessidade de consolidar o acompanhamento do desempenho logístico. O gestor enfrentava dificuldades para visualizar as operações dos Centros de Distribuição (CDs) de forma integrada, o que impactava a tomada de decisões estratégicas devido à falta de uma visão consolidada e acessível.
 
-Objetivos principais:<br>
-- Acompanhar a performance logística de forma consolidada entre todos os CDs;<br>
-- Ter a possibilidade de analisar cada CD individualmente;<br>
-- Acompanhar os principais KPIs logísticos como OTIF (Entrega no prazo e completa), INFULL ( Entrega completa) e ONTIME (Entrega no prazo);<br>
-- Visualizar o volume de pedidos entregues no prazo e os atrasados;<br>
-- Ter uma visão clara das ocorrências logísticas (como mercadoria errada, cliente ausente etc);<br>
-- Verificar a distribuição de pedidos por tipo de veículo utilizado;<br>
-- Avaliar o desempenho mensal dos KPIs;<br>
-- Ter uma visão financeira dos custos logísticos, receita bruta, margem e ticket médio;<br>
-- Visualizar os dados por cidade e por tipo de ocorrência..
+| Objetivos do Projeto | Contexto da Solicitação |
+| :--- | :--- |
+| - Monitorar a performance logística consolidada entre todos os CDs. <br> - Analisar o desempenho individualizado por unidade operativa. <br> - Acompanhar KPIs fundamentais: OTIF, InFull e OnTime. <br> - Quantificar o volume de pedidos no prazo versus atrasados. <br> - Mapear ocorrências logísticas (mercadoria errada, cliente ausente). <br> - Avaliar a saúde financeira: custos, receita bruta, margem e ticket médio. | <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Solicita%C3%A7%C3%A3o%20por%20email%20do%20Projeto%20Log%C3%ADstica.JPG?raw=true" width="500"> |
 
 ---
 
-## Ferramentas e Tecnologias:
+## Ferramentas e Tecnologias
 
-- Microsoft Excel: Armazenamento das bases de dados históricas (2022-2025).<br>
-
-- Power Query (M): Utilizado para todo o processo de limpeza, tratamento de erros e consolidação (ETL).<br>
-
-- Linguagem DAX: Desenvolvimento de métricas de performance e inteligência de tempo.<br>
-
-- Power BI Desktop: Construção do modelo de dados, dashboards interativos e design de interface (UX/UI).
+- **Microsoft Excel:** Repositório das bases de dados históricas (2022-2025).
+- **Power Query (Linguagem M):** Utilizado para todo o processo de limpeza, tratamento de erros e consolidação (ETL).
+- **Linguagem DAX:** Desenvolvimento de métricas complexas de performance e inteligência de tempo.
+- **Power BI Desktop:** Construção do modelo de dados, dashboards interativos e interface de usuário (UX/UI).
 
 ---
 
 ## Tratamento de Dados (ETL)
-<img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Tratamento%20de%20Dados%20aplicado.JPG?raw=true">
-Nesta fase, utilizei o Power Query para realizar o processo de ETL (Extração, Transformação e Carga). 
-<br><br>
 
-Processos Realizados:
+Nesta fase, utilizei o Power Query para realizar o processo de Extração, Transformação e Carga (ETL), garantindo que os dados estivessem prontos para uma análise precisa.
 
-- Acrescentar Consultas (Append): Uni as tabelas anuais de 2022, 2023, 2024 e 2025 em uma única tabela mestre. Isso permitiu uma análise histórica contínua sem fragmentação.<br>
-
-- Limpeza de Delimitadores: Ajustei o tratamento de arquivos CSV/Excel para garantir que as colunas de "Custo" e "Receita" fossem lidas corretamente, removendo caracteres especiais desnecessários.<br>
-
-- Tipagem de Dados: Configurei cada coluna com seu formato ideal (Data para prazos, Decimal Fixo para valores financeiros e Texto para categorias de CDs).<br>
-
-- Criação de Colunas Condicionais: Desenvolvi lógicas simples no Power Query para pré-classificar ocorrências, otimizando o processamento que seria feito posteriormente via DAX.
+| Processos Realizados | Evidência Técnica |
+| :--- | :--- |
+| **Acrescentar Consultas (Append):** Unificação das tabelas anuais (2022 a 2025) em uma única tabela mestre, permitindo análise histórica contínua. <br><br> **Limpeza e Padronização:** Ajuste de delimitadores em arquivos CSV/Excel e tratamento de colunas financeiras (Custo e Receita) para leitura correta. <br><br> **Tipagem e Colunas Condicionais:** Configuração de formatos de dados e criação de lógicas para pré-classificar ocorrências operacionais. | <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Tratamento%20de%20Dados%20aplicado.JPG?raw=true" width="500"> |
 
 ---
 
-## Modelagem de Dados e Inteligência de Tempo
-<img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Tabela%20criada%20Dim%20Calend%C3%A1rio.JPG?raw=true">
+## Modelagem de Dados e Arquitetura
 
-Desenvolvi uma tabela de dimensões de tempo (dCalendário) utilizando Linguagem DAX. Esta etapa permite:
+A estrutura do modelo foi desenhada seguindo as melhores práticas de Business Intelligence para suportar filtros dinâmicos e garantir a integridade referencial.
 
-- Análises Comparativas: Evolução mensal e anual (YoY).<br>
+| Arquitetura Star Schema | Relacionamentos do Modelo |
+| :--- | :--- |
+| **Tabela Fato:** Centralização de todos os pedidos e eventos logísticos de 2022 a 2025. <br><br> **Tabelas Dimensões:** Separação clara de informações sobre CDs, Transportes, Status e Tempo. <br><br> **Integridade:** Conexões do tipo 1:N (Um para Muitos), garantindo que os filtros se propaguem corretamente por todo o painel. | <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Relacionamento%20da%20Dim%20Calendario%20com%20a%20Fato%20Pedidos.JPG?raw=true" width="500"> |
 
-- Filtros Temporais: Segmentação por Ano, Mês, Trimestre e Semanas.<br>
+### Inteligência de Tempo (Tabela dCalendário)
 
-- Continuidade: Garante que o dashboard não tenha "buracos" em meses sem movimentação operacional.
+Desenvolvi uma tabela de dimensões de tempo dedicada utilizando Linguagem DAX. Esta etapa é fundamental para permitir análises comparativas e garantir a continuidade histórica do dashboard.
 
----
-
-## Configurações de Parâmetros e Inteligência de Tempo
-<img align="right" width="300"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Par%C3%A2metros%20Criados.JPG?raw=true">
-Nesta seção, detalho os bastidores técnicos que permitem a automatização das datas do dashboard e a clareza visual para a tomada de decisão.
-<br><br>
-
-Parâmetros Dinâmicos (MinDate e MaxDate)<br>
-Para que a tabela de calendário fosse inteligente e dinâmica, criei parâmetros de tempo no Power BI.<br>
-
-- MinDate (Data Mínima): Uma medida que localiza automaticamente a data mais antiga na tabela Fato_Pedidos (ex: 01/01/2022).<br>
-
-- MaxDate (Data Máxima): Uma medida que localiza a data de pedido mais recente na base (ex: 31/12/2025).<br>
-
-Objetivo: Esta configuração garante que, ao adicionar novos arquivos à pasta de dados, o intervalo de tempo do dashboard se ajuste sozinho, sem intervenção manual. É a base para uma solução escalável.
-<br>
-##
-
-<img align="right" width="300"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Regra%20de%20cores%20para%20o%20gr%C3%A1fico%20de%20%C3%A1rea.JPG?raw=true">
-
-Implementei uma regra visual (Formatação Condicional) no gráfico de velocímetro do KPI principal (OTIF).<br>
-
-Utilizei a lógica DAX e as configurações de "Cor - Série" para definir uma meta de 65%:<br>
-
-- Se o valor for >= 0,65 (65%), a cor do KPI muda automaticamente para preto/verde, sinalizando meta atingida.
-
-- Se o valor for < 0,65 (65%), a cor muda para vermelho, alertando o gestor sobre o desempenho abaixo do esperado.
-
-Objetivo: Melhorar a experiência do usuário (UX), permitindo uma leitura rápida e clara do status operacional ("Atenção" ou "Sucesso").
+| Funcionalidades da dCalendário | Visualização do Código DAX |
+| :--- | :--- |
+| **Análises Comparativas:** Evolução mensal e anual (YoY), essencial para identificar sazonalidade. <br><br> **Filtros Temporais:** Segmentação por Ano, Mês, Trimestre e Semanas. <br><br> **Consistência:** Garante que o dashboard não apresente lacunas em meses sem movimentação operacional. | <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Tabela%20criada%20Dim%20Calend%C3%A1rio.JPG?raw=true" width="500"> |
 
 ---
 
-## Arquitetura Star Schema (Esquema Estrela)
-<img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Relacionamento%20da%20Dim%20Calendario%20com%20a%20Fato%20Pedidos.JPG?raw=true">
+## Configurações de Parâmetros e Automação
 
+Implementação de bastidores técnicos que garantem a escalabilidade do painel e o monitoramento visual de metas.
 
-Organizei o modelo seguindo as melhores práticas de Business Intelligence:
+**Parâmetros Dinâmicos (MinDate e MaxDate)**
+Desenvolvi parâmetros que identificam automaticamente o intervalo de datas na base. Isso assegura que, ao inserir novos dados, o dashboard se ajuste sozinho, sem necessidade de ajuste manual no modelo.
 
+**Formatação Condicional de Metas**
+Apliquei regras visuais no KPI de OTIF com meta de 65%. A cor do indicador alterna automaticamente entre verde (meta atingida) e vermelho (atenção), otimizando o tempo de leitura do gestor.
 
-- Tabela Fato: Centralizei todos os pedidos e eventos logísticos de 2022 a 2025.<br>
-
-- Tabelas Dimensões: Separei as informações de CDs, Transporte, Status e Calendário.<br>
-
-- Relacionamentos: Estabeleci conexões do tipo 1:N (Um para Muitos), garantindo integridade referencial e filtros que se propagam corretamente por todas as páginas do dashboard.
+<div align="center">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Par%C3%A2metros%20Criados.JPG?raw=true" width="45%">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Regra%20de%20cores%20para%20o%20gr%C3%A1fico%20de%20%C3%A1rea.JPG?raw=true" width="45%">
+</div>
 
 ---
 
 ## Inteligência de Dados (Cálculos DAX)
-<img align="right" width="200"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Medidas%20Criadas.JPG?raw=true">
 
+Criação de uma camada de medidas robustas para transformar volume de pedidos em indicadores de rentabilidade e serviço.
 
-Para transformar os dados brutos em insights acionáveis, desenvolvi uma camada de inteligência utilizando Linguagem DAX. O foco foi criar indicadores de performance (KPIs) e métricas financeiras que respondem diretamente às necessidades do gestor.<br><br>
-
-- Organizei o modelo com mais de 10 medidas calculadas, divididas entre:<br>
-
-- KPIs de Performance: OTIF, OnTime e InFull.<br>
-
-- Volumetria: Contagem total de pedidos, pedidos no prazo, atrasados e com ocorrências.<br>
-
-Saúde Financeira: Receita Bruta, Custo Total, Margem e Ticket Médio.<br>
-##
+| Gestão de Medidas | Inventário de Métricas |
+| :--- | :--- |
+| O modelo conta com mais de 10 medidas calculadas, separadas por contexto: <br> - **Performance:** OTIF, OnTime, InFull. <br> - **Volume:** Pedidos Totais, Atrasos, Ocorrências. <br> - **Financeiro:** Margem Bruta, Receita, Ticket Médio. | <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Medidas%20Criadas.JPG?raw=true" width="250"> |
 
 ### Exemplos de Lógica Aplicada (Fórmulas DAX)
+
+Abaixo, apresento a construção técnica de três métricas fundamentais para a operação:
 
 <div align="center">
   <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Exemplo%201%20de%20Medidas%20criadas%20usando%20DAX.JPG?raw=true" width="32%">
@@ -128,92 +80,43 @@ Saúde Financeira: Receita Bruta, Custo Total, Margem e Ticket Médio.<br>
   <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Exemplo%203%20Medidas%20criadas%20usando%20DAX.JPG?raw=true" width="32%">
 </div>
 
-<br>
-
-Apresento três exemplos técnicos de como a lógica foi implementada no Power BI para garantir precisão e performance na tomada de decisão:
-
-1. **Eficiência de Prazo (% ONTIME):** Utilizei a função `DIVIDE` para calcular a proporção de pedidos entregues no prazo. Esta função é considerada uma boa prática em BI, pois trata automaticamente erros de divisão por zero, garantindo que o dashboard nunca exiba valores de erro e mantenha a integridade visual.
-
-2. **Segmentação Dinâmica (CALCULATE):** Através da função `CALCULATE`, criei métricas específicas que filtram a tabela fato diretamente na medida. Neste exemplo, a medida isola apenas os pedidos cujo status é "No Prazo", permitindo comparações rápidas entre o volume total e a performance ideal do negócio.
-
-3. **Qualidade Logística (Pedidos SEM Ocorrência):** Para medir a qualidade operacional, apliquei um filtro na dimensão de status (`idOcorrencia = "1"`). Isso permite identificar os pedidos que foram entregues sem qualquer tipo de avaria, reclamação ou problema de comunicação, fundamental para o cálculo do indicador mestre: o **OTIF**.
+1. **Eficiência de Prazo (% ONTIME):** Utilização da função `DIVIDE` para garantir segurança matemática e evitar erros de divisão por zero.
+2. **Segmentação Dinâmica (CALCULATE):** Aplicação de filtros contextuais para isolar o volume de pedidos entregues rigorosamente no prazo.
+3. **Qualidade Operacional:** Lógica para contabilizar entregas sem ocorrências, servindo de base para o indicador OTIF.
 
 ---
 
 ## Design de Experiência (UX) e Interatividade
 
-Nesta etapa, foquei em transformar dados complexos em uma interface intuitiva. O objetivo foi garantir que o gestor pudesse navegar entre diferentes visões e obter detalhes sem sobrecarregar a tela principal.
+O foco do design foi a usabilidade, permitindo que o usuário realize o detalhamento dos dados de forma intuitiva.
 
-### Navegação e Identidade Visual
-
-Desenvolvi botões de navegação interativos que separam o dashboard em duas visões estratégicas:
--   **KPIs de Performance:** Visão operacional focada no OTIF.
--   **Saúde Financeira:** Visão de faturamento, custo e margem.
+- **Navegação:** Menu lateral com botões para alternar entre a visão operacional e financeira.
+- **Detalhamento (Tooltips):** Configuração de janelas flutuantes que detalham ocorrências por tipo de veículo ou região sem a necessidade de sair da tela principal.
 
 <div align="center">
-  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Cria%C3%A7%C3%A3o%20de%20Bot%C3%B5es%20de%20navega%C3%A7%C3%A3o%20de%20p%C3%A1ginas.JPG?raw=true" width="45%">
-</div>
-
-<br>
-
-### Tooltips Personalizadas (Dicas de Ferramenta)
-
-As Tooltips foram configuradas para fornecer um "mergulho nos dados" sem a necessidade de trocar de página. Ao passar o mouse sobre os gráficos, janelas flutuantes detalham as informações.
-
-<div align="center">
-  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Cria%C3%A7%C3%A3o%20Tool%20Tip%202.JPG?raw=true" width="48%">
-  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Cria%C3%A7%C3%A3o%20Tool%20Tip%203.JPG?raw=true" width="48%">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Cria%C3%A7%C3%A3o%20de%20Bot%C3%B5es%20de%20navega%C3%A7%C3%A3o%20de%20p%C3%A1ginas.JPG?raw=true" width="40%">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Cria%C3%A7%C3%A3o%20Tool%20Tip%202.JPG?raw=true" width="28%">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/Cria%C3%A7%C3%A3o%20Tool%20Tip%203.JPG?raw=true" width="28%">
 </div>
 
 ---
 
 ## Entrega Final e Insights de Negócio
-O objetivo final deste projeto foi transformar dados brutos em uma ferramenta de apoio à decisão. Com o dashboard concluído, é possível identificar gargalos operacionais e oportunidades de economia financeira.
 
-### Painel de KPIs (Visão Operacional)
-<img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/P%C3%A1gina%20KPI%C2%B4s.JPG?raw=true">
+O resultado final é uma ferramenta de suporte à decisão que permite identificar oportunidades de melhoria na malha logística.
 
-Principais Insights Operacionais:
+<div align="center">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/P%C3%A1gina%20KPI%C2%B4s.JPG?raw=true" width="48%">
+  <img src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/P%C3%A1gina%20Financeiro.JPG?raw=true" width="48%">
+</div>
 
-- Gargalo de Ocorrências: Identificamos que "Mercadoria Errada" e "Cliente Ausente" são as maiores causas de insucesso nas entregas. Isso sugere uma revisão no processo de conferência no carregamento e uma melhoria na comunicação de agendamento com o cliente.<br>
-
-Performance de Frota: O uso de Tooltips permite visualizar que determinados tipos de veículos, como a Fiorino, possuem um volume maior de entregas no prazo em comparação a carretas de grande porte em áreas urbanas.<br>
-
-OTIF Geográfico: O mapa destaca cidades onde o índice OTIF está abaixo da meta (65%), permitindo uma atuação direta nos Centros de Distribuição dessas regiões.
-
-##
-
-### Painel Financeiro (Visão de Rentabilidade)
-<img align="right" width="500"  src="https://github.com/JCarlosGN/Projeto_Logistica_Portfolio/blob/main/Imagens%20Projeto%20Logistica/P%C3%A1gina%20Financeiro.JPG?raw=true">
-
-Principais Insights Financeiros:
-
-- Análise de Margem: Através das medidas DAX de % Margem e Ticket Médio, conseguimos isolar rotas que, apesar de alto faturamento, possuem custos logísticos que corroem o lucro.<br>
-
-- Impacto das Ocorrências: Calculamos o custo do "retrabalho" gerado por entregas com ocorrência, quantificando a perda financeira direta por mercadorias recusadas.
+**Insights Extraídos:**
+- **Gargalos Operacionais:** "Mercadoria Errada" e "Cliente Ausente" são os principais detratores do OTIF, exigindo revisão nos processos de checkout e agendamento.
+- **Eficiência de Frota:** Veículos leves possuem melhor performance de prazo em áreas urbanas, enquanto veículos pesados demandam maior atenção no planejamento de rotas.
+- **Saúde Financeira:** Identificação de rotas com alto faturamento, porém com margem reduzida devido aos custos de reentrega e ocorrências.
 
 ---
 
-##
-##
+## Conclusão Estratégica
 
-## Conclusão Estratégica: Inteligência de Dados na Operação Logística
-Este projeto não se limitou à criação de gráficos, mas sim ao desenvolvimento de uma solução de Business Intelligence voltada para a eficiência da malha logística. Através da integração de dados de pedidos e ocorrências, o dashboard permite uma transição da gestão reativa para a gestão preditiva.
-
-Valor Agregado à Operação:
-Otimização de Custos (Bottom Line): Através das métricas financeiras como Custo Total e Margem, o gestor consegue identificar rotas onde o frete está consumindo a rentabilidade, permitindo renegociações ou trocas de modais.
-
-Melhoria no Nível de Serviço (SLA): Acompanhar o % OTIF e o % ONTIME em tempo real permite que a operação identifique imediatamente quais Centros de Distribuição ou transportadoras estão performando abaixo da meta de 65% estabelecida nas regras de negócio.
-
-Redução de Ineficiências (Ocorrências): Ao mapear motivos como "Mercadoria Errada" ou "Pedido Faltando", a operação pode atuar na causa raiz dentro do armazém, reduzindo o custo de logística reversa e aumentando a satisfação do cliente final.
-
-Decisões Baseadas em Evidências: O uso de parâmetros dinâmicos e filtros de data permite análises históricas precisas para planejar picos de demanda e sazonalidade.
-
-### Resultado Final
-A entrega deste dashboard proporciona à liderança logística uma "Torre de Controle" capaz de monitorar a saúde financeira e a performance de entrega em um único local, eliminando planilhas manuais e garantindo que a decisão seja sempre pautada em dados íntegros e atualizados.
-
-
-
-
-
-
+Este projeto entregou uma solução de Business Intelligence que transforma a gestão logística de reativa em preventiva. A centralização dos dados em uma torre de controle automatizada permite a otimização de custos e o monitoramento rigoroso do nível de serviço (SLA), garantindo decisões baseadas em evidências e integridade total das informações.
